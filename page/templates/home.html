@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}골드키위고등학교{% endblock %}
+{% block link %}{% static 'css/home.css' %}{% endblock %}
+
+{% block content %}
+    
+<main class="container">
+<div class="col-md-3">
+  <div class="wiki-table-wrap" style="width:600px;">
+    <table class="wiki-table">
+        <tr>
+            <td colspan="2" style="background-color:#FAD766;">
+                <span><strong>골드키위고등학교</strong></span><br>
+                <span>Gold Kiwi High School</span><br>
+            </td>
+        </tr>
+        <tr class="wiki-map">
+            <td colspan="2" >
+                <div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.1684110301153!2d126.88997895025189!3d37.527527179706105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9eec884d66e9%3A0x4f047eae398c5b80!2z7L2U7Iqk7Yq47L2UIOyWke2PieygkA!5e0!3m2!1sko!2skr!4v1607090398412!5m2!1sko!2skr" width="560" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <img src="https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/S0E/image/v91zIz9BSWWH7JV8-wCh17WsTjY.png"
+          title="골키고 학교사진" style="width:550px; height:300px">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>
+                    <strong>교훈</strong>
+                </span>
+            </td>
+            <td>
+                키위먹고잘크자🥝
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>
+                    <strong>교장</strong>
+                </span>
+            </td>
+            <td>
+                박키위
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>
+                    <strong>교감</strong>
+                </span>
+            </td>
+            <td>
+                김키위
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>
+                    <strong>홈페이지</strong>
+                </span>
+            </td>
+            <td>
+                <a href="https://www.naver.com/" target="_blank">서울위키고등학교</a>
+            </td>
+        </tr>
+    </table>
+    </div>
+</div>
+<br>
+  <div class="row">
+    <div class="col-md-8">
+      <h3 class="pb-4 mb-4 font-italic border-bottom">
+        게시글 모음
+      </h3>
+      {% for post in posts %}
+      <article class="blog-post">
+        <h2 class="blog-post-title">{{ post.title }}
+            <div class="btn-group">
+                <a href = "{% url 'update' post.id %}" class = "btn btn-sm btn-outline-secondary">정보수정</a>
+                <a href = "{% url 'delete' post.id %}" class = "btn btn-sm btn-outline-danger">정보삭제</a>
+            </div>
+        </h2>
+        <p class="blog-post-meta">{{ post.update_date|date:"Y/m/d" }}</p>
+        <span>{{ post.text|truncatechars:20 }}<a href="{% url 'detail' post.id %}">...자세히 알아보기</a></span>
+        
+        <hr>
+      </article><!-- /.blog-post -->
+      {% endfor %}
+
+    </div>
+
+
+
+  </div><!-- /.row -->
+
+</main><!-- /.container -->
+ 
+
+{% endblock %}

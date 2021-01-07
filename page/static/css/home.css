@@ -1,0 +1,14 @@
+.wiki-table-wrap{
+    display: block;
+    margin-bottom: 30px;
+}
+
+.wiki-table{
+	background-color: #f5f5f5;
+    border-collapse: collapse;
+	text-align:center;
+}
+.wiki-table td{
+	padding: 5px 10px;
+	border: 1px solid #ddd;
+}
